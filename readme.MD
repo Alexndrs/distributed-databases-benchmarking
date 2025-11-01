@@ -77,4 +77,73 @@ docker exec -it mongo_mike mongosh testdb --eval "db.stats()"
 
 We have sucessfully created one running container of mongo that can be accessed from outside.
 
-B) 
+### B) Making mongo replica on multiple nodes (mutliple container about the same database)
+
+In this part we will try to simulate the primary-secondary architecture for mongo by replicating the mongo database on multiple docker container. Following the primary-secondary principle : one container will allow writing while all the other containers will be read-only. 
+
+Doc used : 
+- https://docs.docker.com/engine/network/
+  https://hub.docker.com/_/mongo
+ to create a container network (connecting multiple containers)
+- https://www.mongodb.com/docs/manual/administration/configuration/
+ for replica config
+
+
+Creating the network
+```bash
+$ docker network create mongo-net
+```
+
+Creating the containers, making them associate to the `mongo-net` network and allowing them to join the replicaSet `rs0`
+```bash
+$ docker run -d --name mongo1 --network mongo-net mongo --replSet rs0
+$ docker run -d --name mongo2 --network mongo-net mongo --replSet rs0
+$ docker run -d --name mongo3 --network mongo-net mongo --replSet rs0
+```
+
+Connecting inside mongo1, and initiate mongo replica set `rs0`. This will elect one container as primary and other members as secondary.
+
+```
+$ docker exec -it mongo1 mongosh
+$ rs.initiate({_id:"rs0",members:[{_id:0,host:"mongo1:27017"},{_id:1,host:"mongo2:27017"},{_id:2,host:"mongo3:27017"}]})
+> {
+   ok: 1,
+   ...
+  }
+
+$ rs.status()
+> {
+   set: 'rs0',
+   syncSourceHost: 'mongo2:27017',
+   ...
+   members:[
+        {name: 'mongo1:27017', health: 1, stateStr: 'SECONDARY',...},
+        {name: 'mongo2:27017', health: 1, stateStr: 'PRIMARY',...},
+        {name: 'mongo3:27017', health: 1, stateStr: 'SECONDARY',...}
+    ],
+    ...
+  }
+```
+Container `mongo2` has been elected by mongo as PRIMARY container for replicaset `rs0`and the two others as SECONDARY.
+
+Testing the propagation:
+```
+$ docker exec -it mongo2 mongosh
+$ use test_db
+$ db.users.insertOne({name: "Alex", score: 100})
+
+$ docker exec -it mongo1 mongosh
+$ use test_db
+$ db.users.find()
+> [
+    {
+        _id: ObjectId('69066da3aa26303ae1ce5f47'),
+        name: 'Alex',
+        score: 100
+    }
+  ]
+$ db.users.insertOne({name: "Mike", score: 42})
+> MongoServerError[NotWritablePrimary]: not primary
+```
+
+Everything seems to work properly : we can write on mongo2, mongo1 is on read only and the propagation among `rs0` seems to work.
