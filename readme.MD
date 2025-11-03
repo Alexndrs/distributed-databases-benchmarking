@@ -103,7 +103,7 @@ $ docker run -d --name mongo3 --network mongo-net mongo --replSet rs0
 
 Connecting inside mongo1, and initiate mongo replica set `rs0`. This will elect one container as primary and other members as secondary.
 
-```
+```bash
 $ docker exec -it mongo1 mongosh
 $ rs.initiate({_id:"rs0",members:[{_id:0,host:"mongo1:27017"},{_id:1,host:"mongo2:27017"},{_id:2,host:"mongo3:27017"}]})
 > {
@@ -127,7 +127,7 @@ $ rs.status()
 Container `mongo2` has been elected by mongo as PRIMARY container for replicaset `rs0`and the two others as SECONDARY.
 
 Testing the propagation:
-```
+```bash
 $ docker exec -it mongo2 mongosh
 $ use test_db
 $ db.users.insertOne({name: "Alex", score: 100})
@@ -147,3 +147,75 @@ $ db.users.insertOne({name: "Mike", score: 42})
 ```
 
 Everything seems to work properly : we can write on mongo2, mongo1 is on read only and the propagation among `rs0` seems to work.
+
+### C) Measuring mongo performances with YCSB
+
+doc used for YCSB : https://github.com/brianfrankcooper/YCSB/wiki/Getting-Started
+
+Download YCSB
+```bash
+$ curl -O --location https://github.com/brianfrankcooper/YCSB/releases/download/0.17.0/ycsb-0.17.0.tar.gz
+$ tar xfvz ycsb-0.17.0.tar.gz
+$ cd ycsb-0.17.0
+```
+
+Making a yml file for creating the different mongo container easily : see [docker-compose-mongo-3.yml](docker-compose-mongo-3.yml)
+
+Start the containers and network: 
+```bash
+$ docker compose -f docker-compose-mongo-3.yml up -d
+$ docker ps
+> CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS                      NAMES
+  7fd57313a306   mongo:latest   "docker-entrypoint.s…"   5 seconds ago   Up 4 seconds   0.0.0.0:27019->27017/tcp   mongo3
+  8a25daf74b21   mongo:latest   "docker-entrypoint.s…"   5 seconds ago   Up 4 seconds   0.0.0.0:27018->27017/tcp   mongo2
+  7a3c8ef04cc9   mongo:latest   "docker-entrypoint.s…"   5 seconds ago   Up 4 seconds   0.0.0.0:27017->27017/tcp   mongo1
+```
+
+init the replicat set:
+```bash
+$ docker exec -it mongo1 mongosh
+$ # inside mongo shell
+$ rs.initiate({
+  _id: "rs0",
+  members: [
+    {_id: 0, host: "mongo1:27017"},
+    {_id: 1, host: "mongo2:27017"},
+    {_id: 2, host: "mongo3:27017"}
+  ]
+})
+$ exit
+```
+
+connecting wsl and mongo driver through localhost: 
+```bash
+$ sudo nano /etc/hosts
+# adding lines : 
+127.0.0.1 mongo1
+127.0.0.1 mongo2
+127.0.0.1 mongo3
+```
+
+Creating [mongodb.properties](./ycsb-0.17.0/bin/mongodb.properties) inside to indicate to YCSB where are the mongodb databases
+```bash
+mongodb.url=mongodb://mongo1:27017,mongo2:27018,mongo3:27019/?replicaSet=rs0
+mongodb.database=ycsb 
+```
+
+Using YCSB inside bin
+```bash
+$ ./ycsb load mongodb -s -P ../workloads/workloada -P mongodb.properties
+> [OVERALL], RunTime(ms), 4105
+  [OVERALL], Throughput(ops/sec), 243.605359317905
+  ...
+$ ./ycsb run mongodb -s -P ../workloads/workloada -P mongodb.properties
+> [OVERALL], RunTime(ms), 4105
+  [OVERALL], Throughput(ops/sec), 243.605359317905
+  ...
+```
+
+### D) Scripting the tests
+
+/!\ I'm not a bash expert, I have done the experiments above and I've given this markdown to claude, from my pseudo code it helped me write the following scripts that simply automate what has been done above by hand in command lines /!\
+
+- [deploy_mongo.sh](./deploy_mongo.sh) : it does exactly the process above of creating the docker containers of mongo nodes and connect them through a docker network for a given number of nodes.
+- [run_full_benchmark](./run_full_benchmark.sh) : it run YCSB through all the workload for respetively 3 and 5 mongo nodes. It writes the results in [results](./results/)

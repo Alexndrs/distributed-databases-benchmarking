@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  mongo1:
+    image: mongo:latest
+    container_name: mongo1
+    command: mongod --replSet rs0 --bind_ip_all
+    ports:
+      - "27017:27017"
+    networks:
+      - mongo-net
+    environment:
+      - MONGO_INITDB_DATABASE=ycsb
+
+  mongo2:
+    image: mongo:latest
+    container_name: mongo2
+    command: mongod --replSet rs0 --bind_ip_all
+    ports:
+      - "27018:27017"
+    networks:
+      - mongo-net
+    environment:
+      - MONGO_INITDB_DATABASE=ycsb
+
+  mongo3:
+    image: mongo:latest
+    container_name: mongo3
+    command: mongod --replSet rs0 --bind_ip_all
+    ports:
+      - "27019:27017"
+    networks:
+      - mongo-net
+    environment:
+      - MONGO_INITDB_DATABASE=ycsb
+
+  mongo4:
+    image: mongo:latest
+    container_name: mongo4
+    command: mongod --replSet rs0 --bind_ip_all
+    ports:
+      - "27020:27017"
+    networks:
+      - mongo-net
+    environment:
+      - MONGO_INITDB_DATABASE=ycsb
+
+  mongo5:
+    image: mongo:latest
+    container_name: mongo5
+    command: mongod --replSet rs0 --bind_ip_all
+    ports:
+      - "27021:27017"
+    networks:
+      - mongo-net
+    environment:
+      - MONGO_INITDB_DATABASE=ycsb
+    
+    
+networks:
+  mongo-net:
+    driver: bridge
