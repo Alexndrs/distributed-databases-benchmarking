@@ -218,4 +218,4 @@ $ ./ycsb run mongodb -s -P ../workloads/workloada -P mongodb.properties
 /!\ I'm not a bash expert, I have done the experiments above and I've given this markdown to claude, from my pseudo code it helped me write the following scripts that simply automate what has been done above by hand in command lines /!\
 
 - [deploy_mongo.sh](./deploy_mongo.sh) : it does exactly the process above of creating the docker containers of mongo nodes and connect them through a docker network for a given number of nodes.
-- [run_full_benchmark](./run_full_benchmark.sh) : it run YCSB through all the workload for respetively 3 and 5 mongo nodes. It writes the results in [results](./results/)
+- [run_mongo_benchmark](./run_mongo_benchmark.sh) : it run YCSB through all the workload for a given number of mongo nodes (given in args). It writes the results in results_mongo_{num_nodes} e.g for 3 nodes the logs are in [results_mongo_3](./results_mongo_3/)

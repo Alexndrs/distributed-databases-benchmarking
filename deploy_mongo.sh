@@ -9,8 +9,12 @@ deploy_mongo_cluster() {
     echo "Creating new containers"
     docker compose -f docker-compose-mongo-${num_nodes}.yml up -d
     
+    echo "Checking if containers are running..."
+    docker ps --filter "name=mongo"
+
     echo "Waiting for containers to start (30 seconds)..."
     sleep 30
+
     
     echo "Init replica set..."
     local members=""
@@ -21,7 +25,7 @@ deploy_mongo_cluster() {
             members="${members}, {_id: $((i-1)), host: \"mongo${i}:27017\"}"
         fi
     done
-    docker exec -it mongo1 mongosh --eval "
+    docker exec mongo1 mongosh --eval "
     rs.initiate({
         _id: 'rs0',
         members: [$members]
@@ -32,7 +36,7 @@ deploy_mongo_cluster() {
     sleep 30
     
     echo "Verify replica set status"
-    docker exec -it mongo1 mongosh --eval "rs.status()" | grep -E "name|stateStr"
+    docker exec mongo1 mongosh --eval "rs.status()" | grep -E "name|stateStr"
     
     echo "Updating mongodb.properties"
     local connection_string="mongodb://"

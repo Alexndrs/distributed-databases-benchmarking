@@ -1,0 +1,39 @@
+java -cp /mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/cassandra-binding/conf:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/conf:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/lib/core-0.17.0.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/lib/HdrHistogram-2.1.4.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/lib/htrace-core4-4.1.0-incubating.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/lib/jackson-core-asl-1.9.4.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/lib/jackson-mapper-asl-1.9.4.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/cassandra-binding/lib/cassandra-binding-0.17.0.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/cassandra-binding/lib/cassandra-driver-core-3.0.0.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/cassandra-binding/lib/guava-16.0.1.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/cassandra-binding/lib/metrics-core-3.1.2.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/cassandra-binding/lib/netty-buffer-4.0.33.Final.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/cassandra-binding/lib/netty-codec-4.0.33.Final.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/cassandra-binding/lib/netty-common-4.0.33.Final.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/cassandra-binding/lib/netty-handler-4.0.33.Final.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/cassandra-binding/lib/netty-transport-4.0.33.Final.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/cassandra-binding/lib/slf4j-api-1.7.25.jar site.ycsb.Client -db site.ycsb.db.CassandraCQLClient -s -P ../workloads/workloadc -P cassandra.properties -load
+Command line: -db site.ycsb.db.CassandraCQLClient -s -P ../workloads/workloadc -P cassandra.properties -load
+YCSB Client 0.17.0
+
+Loading workload...
+Starting test.
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2025-11-22 18:34:44:365 0 sec: 0 operations; est completion in 0 second 
+Nov 22, 2025 6:34:44 PM io.netty.util.internal.PlatformDependent <clinit>
+INFO: Your platform does not provide complete low-level API for accessing direct buffers reliably. Unless explicitly requested, heap buffer will always be preferred to avoid potential system unstability.
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+2025-11-22 18:34:54:351 10 sec: 990 operations; 98.96 current ops/sec; est completion in 1 second [INSERT: Count=998, Max=135807, Min=1157, Avg=3534.01, 90=4539, 99=9383, 99.9=80895, 99.99=135807] 
+2025-11-22 18:34:56:619 12 sec: 1000 operations; 4.37 current ops/sec; [CLEANUP: Count=1, Max=2250751, Min=2248704, Avg=2249728, 90=2250751, 99=2250751, 99.9=2250751, 99.99=2250751] [INSERT: Count=2, Max=3565, Min=1725, Avg=2645, 90=3565, 99=3565, 99.9=3565, 99.99=3565] 
+[OVERALL], RunTime(ms), 12296
+[OVERALL], Throughput(ops/sec), 81.32726089785297
+[TOTAL_GCS_G1_Young_Generation], Count, 1
+[TOTAL_GC_TIME_G1_Young_Generation], Time(ms), 5
+[TOTAL_GC_TIME_%_G1_Young_Generation], Time(%), 0.04066363044892648
+[TOTAL_GCS_G1_Old_Generation], Count, 0
+[TOTAL_GC_TIME_G1_Old_Generation], Time(ms), 0
+[TOTAL_GC_TIME_%_G1_Old_Generation], Time(%), 0.0
+[TOTAL_GCs], Count, 1
+[TOTAL_GC_TIME], Time(ms), 5
+[TOTAL_GC_TIME_%], Time(%), 0.04066363044892648
+[CLEANUP], Operations, 1
+[CLEANUP], AverageLatency(us), 2249728.0
+[CLEANUP], MinLatency(us), 2248704
+[CLEANUP], MaxLatency(us), 2250751
+[CLEANUP], 95thPercentileLatency(us), 2250751
+[CLEANUP], 99thPercentileLatency(us), 2250751
+[INSERT], Operations, 1000
+[INSERT], AverageLatency(us), 3532.228
+[INSERT], MinLatency(us), 1157
+[INSERT], MaxLatency(us), 135807
+[INSERT], 95thPercentileLatency(us), 5723
+[INSERT], 99thPercentileLatency(us), 9383
+[INSERT], Return=OK, 1000

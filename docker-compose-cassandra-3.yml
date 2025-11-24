@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  cassandra1:
+    image: cassandra:4.1
+    container_name: cassandra1
+    environment:
+      CASSANDRA_CLUSTER_NAME: YCSBCluster
+      CASSANDRA_SEEDS: cassandra1,cassandra2,cassandra3
+      CASSANDRA_BROADCAST_ADDRESS: cassandra1 
+    ports:
+      - "9042:9042"
+    networks:
+      - cassnet
+    healthcheck:
+      test: ["CMD-SHELL", "cqlsh -u cassandra -p cassandra -e 'describe keyspaces'"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 30s
+
+  cassandra2:
+    image: cassandra:4.1
+    container_name: cassandra2
+    environment:
+      CASSANDRA_CLUSTER_NAME: YCSBCluster
+      CASSANDRA_SEEDS: cassandra1,cassandra2,cassandra3
+      CASSANDRA_BROADCAST_ADDRESS: cassandra2
+    networks:
+      - cassnet
+    healthcheck:
+      test: ["CMD-SHELL", "cqlsh -u cassandra -p cassandra -e 'describe keyspaces'"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 30s
+
+  cassandra3:
+    image: cassandra:4.1
+    container_name: cassandra3
+    environment:
+      CASSANDRA_CLUSTER_NAME: YCSBCluster
+      CASSANDRA_SEEDS: cassandra1,cassandra2,cassandra3
+      CASSANDRA_BROADCAST_ADDRESS: cassandra3
+    networks:
+      - cassnet
+    healthcheck:
+      test: ["CMD-SHELL", "cqlsh -u cassandra -p cassandra -e 'describe keyspaces'"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 30s
+
+networks:
+  cassnet:
+    driver: bridge

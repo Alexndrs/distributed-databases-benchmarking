@@ -1,0 +1,41 @@
+java -cp /mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/mongodb-binding/conf:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/conf:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/lib/core-0.17.0.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/lib/HdrHistogram-2.1.4.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/lib/htrace-core4-4.1.0-incubating.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/lib/jackson-core-asl-1.9.4.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/lib/jackson-mapper-asl-1.9.4.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/mongodb-binding/lib/logback-classic-1.1.2.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/mongodb-binding/lib/logback-core-1.1.2.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/mongodb-binding/lib/mongo-java-driver-3.8.0.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/mongodb-binding/lib/mongodb-async-driver-2.0.1.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/mongodb-binding/lib/mongodb-binding-0.17.0.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/mongodb-binding/lib/slf4j-api-1.7.25.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/mongodb-binding/lib/snappy-java-1.1.7.1.jar site.ycsb.Client -db site.ycsb.db.MongoDbClient -s -P ../workloads/workloadb -P mongodb.properties -t
+Command line: -db site.ycsb.db.MongoDbClient -s -P ../workloads/workloadb -P mongodb.properties -t
+YCSB Client 0.17.0
+
+Loading workload...
+Starting test.
+2025-11-22 16:38:13:870 0 sec: 0 operations; est completion in 0 second 
+mongo client connection created with mongodb://mongo1:27017,mongo2:27018,mongo3:27019,mongo4:27020,mongo5:27021/?replicaSet=rs0
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+2025-11-22 16:38:16:456 2 sec: 1000 operations; 382.41 current ops/sec; [READ: Count=941, Max=182271, Min=575, Avg=1617.2, 90=2197, 99=5275, 99.9=15951, 99.99=182271] [CLEANUP: Count=1, Max=6155, Min=6152, Avg=6154, 90=6155, 99=6155, 99.9=6155, 99.99=6155] [UPDATE: Count=59, Max=38399, Min=4160, Avg=8077.53, 90=10071, 99=23471, 99.9=38399, 99.99=38399] 
+[OVERALL], RunTime(ms), 2615
+[OVERALL], Throughput(ops/sec), 382.4091778202677
+[TOTAL_GCS_G1_Young_Generation], Count, 5
+[TOTAL_GC_TIME_G1_Young_Generation], Time(ms), 18
+[TOTAL_GC_TIME_%_G1_Young_Generation], Time(%), 0.6883365200764818
+[TOTAL_GCS_G1_Old_Generation], Count, 0
+[TOTAL_GC_TIME_G1_Old_Generation], Time(ms), 0
+[TOTAL_GC_TIME_%_G1_Old_Generation], Time(%), 0.0
+[TOTAL_GCs], Count, 5
+[TOTAL_GC_TIME], Time(ms), 18
+[TOTAL_GC_TIME_%], Time(%), 0.6883365200764818
+[READ], Operations, 941
+[READ], AverageLatency(us), 1617.1965993623805
+[READ], MinLatency(us), 575
+[READ], MaxLatency(us), 182271
+[READ], 95thPercentileLatency(us), 2707
+[READ], 99thPercentileLatency(us), 5275
+[READ], Return=OK, 941
+[CLEANUP], Operations, 1
+[CLEANUP], AverageLatency(us), 6154.0
+[CLEANUP], MinLatency(us), 6152
+[CLEANUP], MaxLatency(us), 6155
+[CLEANUP], 95thPercentileLatency(us), 6155
+[CLEANUP], 99thPercentileLatency(us), 6155
+[UPDATE], Operations, 59
+[UPDATE], AverageLatency(us), 8077.525423728814
+[UPDATE], MinLatency(us), 4160
+[UPDATE], MaxLatency(us), 38399
+[UPDATE], 95thPercentileLatency(us), 12327
+[UPDATE], 99thPercentileLatency(us), 23471
+[UPDATE], Return=OK, 59

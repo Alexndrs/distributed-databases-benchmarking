@@ -1,0 +1,46 @@
+java -cp /mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/cassandra-binding/conf:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/conf:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/lib/core-0.17.0.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/lib/HdrHistogram-2.1.4.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/lib/htrace-core4-4.1.0-incubating.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/lib/jackson-core-asl-1.9.4.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/lib/jackson-mapper-asl-1.9.4.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/cassandra-binding/lib/cassandra-binding-0.17.0.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/cassandra-binding/lib/cassandra-driver-core-3.0.0.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/cassandra-binding/lib/guava-16.0.1.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/cassandra-binding/lib/metrics-core-3.1.2.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/cassandra-binding/lib/netty-buffer-4.0.33.Final.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/cassandra-binding/lib/netty-codec-4.0.33.Final.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/cassandra-binding/lib/netty-common-4.0.33.Final.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/cassandra-binding/lib/netty-handler-4.0.33.Final.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/cassandra-binding/lib/netty-transport-4.0.33.Final.jar:/mnt/c/Users/alex/Desktop/cours polymtl/log8430e/tp2/ycsb-0.17.0/cassandra-binding/lib/slf4j-api-1.7.25.jar site.ycsb.Client -db site.ycsb.db.CassandraCQLClient -s -P ../workloads/workloadb -P cassandra.properties -t
+Command line: -db site.ycsb.db.CassandraCQLClient -s -P ../workloads/workloadb -P cassandra.properties -t
+YCSB Client 0.17.0
+
+Loading workload...
+Starting test.
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2025-11-22 18:29:36:859 0 sec: 0 operations; est completion in 0 second 
+Nov 22, 2025 6:29:37 PM io.netty.util.internal.PlatformDependent <clinit>
+INFO: Your platform does not provide complete low-level API for accessing direct buffers reliably. Unless explicitly requested, heap buffer will always be preferred to avoid potential system unstability.
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+2025-11-22 18:29:46:832 9 sec: 962 operations; 96.3 current ops/sec; est completion in 1 second [READ: Count=928, Max=149759, Min=1140, Avg=3568.74, 90=4787, 99=10223, 99.9=60863, 99.99=149759] [UPDATE: Count=38, Max=25343, Min=1477, Avg=4689.42, 90=10391, 99=25343, 99.9=25343, 99.99=25343] 
+2025-11-22 18:29:49:198 12 sec: 1000 operations; 15.94 current ops/sec; [READ: Count=33, Max=3621, Min=1562, Avg=2575.52, 90=3527, 99=3621, 99.9=3621, 99.99=3621] [CLEANUP: Count=1, Max=2250751, Min=2248704, Avg=2249728, 90=2250751, 99=2250751, 99.9=2250751, 99.99=2250751] [UPDATE: Count=1, Max=2559, Min=2558, Avg=2559, 90=2559, 99=2559, 99.9=2559, 99.99=2559] 
+[OVERALL], RunTime(ms), 12380
+[OVERALL], Throughput(ops/sec), 80.77544426494346
+[TOTAL_GCS_G1_Young_Generation], Count, 1
+[TOTAL_GC_TIME_G1_Young_Generation], Time(ms), 4
+[TOTAL_GC_TIME_%_G1_Young_Generation], Time(%), 0.03231017770597738
+[TOTAL_GCS_G1_Old_Generation], Count, 0
+[TOTAL_GC_TIME_G1_Old_Generation], Time(ms), 0
+[TOTAL_GC_TIME_%_G1_Old_Generation], Time(%), 0.0
+[TOTAL_GCs], Count, 1
+[TOTAL_GC_TIME], Time(ms), 4
+[TOTAL_GC_TIME_%], Time(%), 0.03231017770597738
+[READ], Operations, 961
+[READ], AverageLatency(us), 3534.630593132154
+[READ], MinLatency(us), 1140
+[READ], MaxLatency(us), 149759
+[READ], 95thPercentileLatency(us), 5591
+[READ], 99thPercentileLatency(us), 10167
+[READ], Return=OK, 961
+[CLEANUP], Operations, 1
+[CLEANUP], AverageLatency(us), 2249728.0
+[CLEANUP], MinLatency(us), 2248704
+[CLEANUP], MaxLatency(us), 2250751
+[CLEANUP], 95thPercentileLatency(us), 2250751
+[CLEANUP], 99thPercentileLatency(us), 2250751
+[UPDATE], Operations, 39
+[UPDATE], AverageLatency(us), 4634.794871794872
+[UPDATE], MinLatency(us), 1477
+[UPDATE], MaxLatency(us), 25343
+[UPDATE], 95thPercentileLatency(us), 11735
+[UPDATE], 99thPercentileLatency(us), 25343
+[UPDATE], Return=OK, 39
