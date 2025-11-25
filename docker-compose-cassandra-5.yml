@@ -1,87 +1,90 @@
-version: '3.8'
-
 services:
   cassandra1:
     image: cassandra:4.1
     container_name: cassandra1
+    hostname: cassandra1
     environment:
       CASSANDRA_CLUSTER_NAME: YCSBCluster
-      CASSANDRA_SEEDS: cassandra1,cassandra2,cassandra3,cassandra4,cassandra5
-      CASSANDRA_BROADCAST_ADDRESS: cassandra1 
+      CASSANDRA_SEEDS: "cassandra1,cassandra2,cassandra3"
+      CASSANDRA_LISTEN_ADDRESS: cassandra1
+      CASSANDRA_BROADCAST_ADDRESS: cassandra1
+      CASSANDRA_RPC_ADDRESS: 0.0.0.0
+      CASSANDRA_ENDPOINT_SNITCH: GossipingPropertyFileSnitch
+      CASSANDRA_NUM_TOKENS: 16
+      MAX_HEAP_SIZE: 256M
+      HEAP_NEWSIZE: 128M
     ports:
       - "9042:9042"
     networks:
-      - cassnet
-    healthcheck:
-      test: ["CMD-SHELL", "cqlsh -u cassandra -p cassandra -e 'describe keyspaces'"]
-      interval: 10s
-      timeout: 5s
-      retries: 6
-      start_period: 30s
+      cassnet:
 
   cassandra2:
     image: cassandra:4.1
     container_name: cassandra2
+    hostname: cassandra2
     environment:
       CASSANDRA_CLUSTER_NAME: YCSBCluster
-      CASSANDRA_SEEDS: cassandra1,cassandra2,cassandra3,cassandra4,cassandra5
+      CASSANDRA_SEEDS: "cassandra1,cassandra2,cassandra3"
+      CASSANDRA_LISTEN_ADDRESS: cassandra2
       CASSANDRA_BROADCAST_ADDRESS: cassandra2
+      CASSANDRA_RPC_ADDRESS: 0.0.0.0
+      CASSANDRA_ENDPOINT_SNITCH: GossipingPropertyFileSnitch
+      CASSANDRA_NUM_TOKENS: 16
+      MAX_HEAP_SIZE: 256M
+      HEAP_NEWSIZE: 128M
     networks:
-      - cassnet
-    healthcheck:
-      test: ["CMD-SHELL", "cqlsh -u cassandra -p cassandra -e 'describe keyspaces'"]
-      interval: 10s
-      timeout: 5s
-      retries: 6
-      start_period: 30s
+      cassnet:
 
   cassandra3:
     image: cassandra:4.1
     container_name: cassandra3
+    hostname: cassandra3
     environment:
       CASSANDRA_CLUSTER_NAME: YCSBCluster
-      CASSANDRA_SEEDS: cassandra1,cassandra2,cassandra3,cassandra4,cassandra5
+      CASSANDRA_SEEDS: "cassandra1,cassandra2,cassandra3"
+      CASSANDRA_LISTEN_ADDRESS: cassandra3
       CASSANDRA_BROADCAST_ADDRESS: cassandra3
+      CASSANDRA_RPC_ADDRESS: 0.0.0.0
+      CASSANDRA_ENDPOINT_SNITCH: GossipingPropertyFileSnitch
+      CASSANDRA_NUM_TOKENS: 16
+      MAX_HEAP_SIZE: 256M
+      HEAP_NEWSIZE: 128M
     networks:
-      - cassnet
-    healthcheck:
-      test: ["CMD-SHELL", "cqlsh -u cassandra -p cassandra -e 'describe keyspaces'"]
-      interval: 10s
-      timeout: 5s
-      retries: 6
-      start_period: 30s
+      cassnet:
 
   cassandra4:
     image: cassandra:4.1
     container_name: cassandra4
+    hostname: cassandra4
     environment:
       CASSANDRA_CLUSTER_NAME: YCSBCluster
-      CASSANDRA_SEEDS: cassandra1,cassandra2,cassandra3,cassandra4,cassandra5
+      CASSANDRA_SEEDS: "cassandra1,cassandra2,cassandra3"
+      CASSANDRA_LISTEN_ADDRESS: cassandra4
       CASSANDRA_BROADCAST_ADDRESS: cassandra4
+      CASSANDRA_RPC_ADDRESS: 0.0.0.0
+      CASSANDRA_ENDPOINT_SNITCH: GossipingPropertyFileSnitch
+      CASSANDRA_NUM_TOKENS: 16
+      MAX_HEAP_SIZE: 256M
+      HEAP_NEWSIZE: 128M
     networks:
-      - cassnet
-    healthcheck:
-      test: ["CMD-SHELL", "cqlsh -u cassandra -p cassandra -e 'describe keyspaces'"]
-      interval: 10s
-      timeout: 5s
-      retries: 6
-      start_period: 30s
+      cassnet:
+
   cassandra5:
     image: cassandra:4.1
     container_name: cassandra5
+    hostname: cassandra5
     environment:
       CASSANDRA_CLUSTER_NAME: YCSBCluster
-      CASSANDRA_SEEDS: cassandra1,cassandra2,cassandra3,cassandra4,cassandra5
+      CASSANDRA_SEEDS: "cassandra1,cassandra2,cassandra3"
+      CASSANDRA_LISTEN_ADDRESS: cassandra5
       CASSANDRA_BROADCAST_ADDRESS: cassandra5
+      CASSANDRA_RPC_ADDRESS: 0.0.0.0
+      CASSANDRA_ENDPOINT_SNITCH: GossipingPropertyFileSnitch
+      CASSANDRA_NUM_TOKENS: 16
+      MAX_HEAP_SIZE: 256M
+      HEAP_NEWSIZE: 128M
     networks:
-      - cassnet
-    healthcheck:
-      test: ["CMD-SHELL", "cqlsh -u cassandra -p cassandra -e 'describe keyspaces'"]
-      interval: 10s
-      timeout: 5s
-      retries: 6
-      start_period: 30s
-    
+      cassnet:
 
 networks:
   cassnet:

@@ -7,40 +7,40 @@ Starting test.
 SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
-2025-11-22 18:23:27:928 0 sec: 0 operations; est completion in 0 second 
-Nov 22, 2025 6:23:28 PM io.netty.util.internal.PlatformDependent <clinit>
+2025-11-24 14:22:48:000 0 sec: 0 operations; est completion in 0 second 
+Nov 24, 2025 2:22:48 PM io.netty.util.internal.PlatformDependent <clinit>
 INFO: Your platform does not provide complete low-level API for accessing direct buffers reliably. Unless explicitly requested, heap buffer will always be preferred to avoid potential system unstability.
+2025-11-24 14:22:57:971 10 sec: 0 operations; est completion in 106751991167300 days 15 hours 
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-2025-11-22 18:23:37:923 10 sec: 926 operations; 92.56 current ops/sec; est completion in 1 second [READ: Count=510, Max=29647, Min=1860, Avg=3718.65, 90=5235, 99=13039, 99.9=22095, 99.99=29647] [UPDATE: Count=424, Max=149503, Min=1689, Avg=3872.5, 90=5275, 99=13575, 99.9=149503, 99.99=149503] 
-2025-11-22 18:23:40:405 12 sec: 1000 operations; 29.59 current ops/sec; [READ: Count=37, Max=6559, Min=1757, Avg=2722.38, 90=3741, 99=6559, 99.9=6559, 99.99=6559] [CLEANUP: Count=1, Max=2269183, Min=2267136, Avg=2268160, 90=2269183, 99=2269183, 99.9=2269183, 99.99=2269183] [UPDATE: Count=29, Max=4911, Min=1726, Avg=2494.93, 90=3411, 99=4911, 99.9=4911, 99.99=4911] 
-[OVERALL], RunTime(ms), 12511
-[OVERALL], Throughput(ops/sec), 79.92966189753017
+2025-11-24 14:23:03:247 15 sec: 1000 operations; 189.54 current ops/sec; [READ: Count=517, Max=9623, Min=1152, Avg=2085.28, 90=2755, 99=3329, 99.9=4467, 99.99=9623] [CLEANUP: Count=1, Max=2222079, Min=2220032, Avg=2221056, 90=2222079, 99=2222079, 99.9=2222079, 99.99=2222079] [UPDATE: Count=483, Max=25391, Min=1319, Avg=2232.12, 90=2821, 99=5587, 99.9=25391, 99.99=25391] 
+[OVERALL], RunTime(ms), 15277
+[OVERALL], Throughput(ops/sec), 65.45787785559992
 [TOTAL_GCS_G1_Young_Generation], Count, 1
 [TOTAL_GC_TIME_G1_Young_Generation], Time(ms), 2
-[TOTAL_GC_TIME_%_G1_Young_Generation], Time(%), 0.015985932379506036
+[TOTAL_GC_TIME_%_G1_Young_Generation], Time(%), 0.013091575571119984
 [TOTAL_GCS_G1_Old_Generation], Count, 0
 [TOTAL_GC_TIME_G1_Old_Generation], Time(ms), 0
 [TOTAL_GC_TIME_%_G1_Old_Generation], Time(%), 0.0
 [TOTAL_GCs], Count, 1
 [TOTAL_GC_TIME], Time(ms), 2
-[TOTAL_GC_TIME_%], Time(%), 0.015985932379506036
-[READ], Operations, 547
-[READ], AverageLatency(us), 3651.2632541133457
-[READ], MinLatency(us), 1757
-[READ], MaxLatency(us), 29647
-[READ], 95thPercentileLatency(us), 6739
-[READ], 99thPercentileLatency(us), 13039
-[READ], Return=OK, 547
+[TOTAL_GC_TIME_%], Time(%), 0.013091575571119984
+[READ], Operations, 517
+[READ], AverageLatency(us), 2085.284332688588
+[READ], MinLatency(us), 1152
+[READ], MaxLatency(us), 9623
+[READ], 95thPercentileLatency(us), 2933
+[READ], 99thPercentileLatency(us), 3329
+[READ], Return=OK, 517
 [CLEANUP], Operations, 1
-[CLEANUP], AverageLatency(us), 2268160.0
-[CLEANUP], MinLatency(us), 2267136
-[CLEANUP], MaxLatency(us), 2269183
-[CLEANUP], 95thPercentileLatency(us), 2269183
-[CLEANUP], 99thPercentileLatency(us), 2269183
-[UPDATE], Operations, 453
-[UPDATE], AverageLatency(us), 3784.309050772627
-[UPDATE], MinLatency(us), 1689
-[UPDATE], MaxLatency(us), 149503
-[UPDATE], 95thPercentileLatency(us), 6359
-[UPDATE], 99thPercentileLatency(us), 11743
-[UPDATE], Return=OK, 453
+[CLEANUP], AverageLatency(us), 2221056.0
+[CLEANUP], MinLatency(us), 2220032
+[CLEANUP], MaxLatency(us), 2222079
+[CLEANUP], 95thPercentileLatency(us), 2222079
+[CLEANUP], 99thPercentileLatency(us), 2222079
+[UPDATE], Operations, 483
+[UPDATE], AverageLatency(us), 2232.1159420289855
+[UPDATE], MinLatency(us), 1319
+[UPDATE], MaxLatency(us), 25391
+[UPDATE], 95thPercentileLatency(us), 3143
+[UPDATE], 99thPercentileLatency(us), 5587
+[UPDATE], Return=OK, 483

@@ -7,40 +7,40 @@ Starting test.
 SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
-2025-11-22 18:27:10:937 0 sec: 0 operations; est completion in 0 second 
-Nov 22, 2025 6:27:11 PM io.netty.util.internal.PlatformDependent <clinit>
+2025-11-24 14:26:58:232 0 sec: 0 operations; est completion in 0 second 
+Nov 24, 2025 2:26:58 PM io.netty.util.internal.PlatformDependent <clinit>
 INFO: Your platform does not provide complete low-level API for accessing direct buffers reliably. Unless explicitly requested, heap buffer will always be preferred to avoid potential system unstability.
+2025-11-24 14:27:08:202 10 sec: 0 operations; est completion in 106751991167300 days 15 hours 
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-2025-11-22 18:27:20:923 10 sec: 1000 operations; 99.95 current ops/sec; [READ: Count=527, Max=30991, Min=1141, Avg=2325.44, 90=2931, 99=6379, 99.9=16751, 99.99=30991] [UPDATE: Count=473, Max=72127, Min=1088, Avg=2264.95, 90=2789, 99=6811, 99.9=72127, 99.99=72127] 
-2025-11-22 18:27:21:454 10 sec: 1000 operations; 0 current ops/sec; [READ: Count=0, Max=0, Min=9223372036854775807, Avg=NaN, 90=0, 99=0, 99.9=0, 99.99=0] [CLEANUP: Count=1, Max=2232319, Min=2230272, Avg=2231296, 90=2232319, 99=2232319, 99.9=2232319, 99.99=2232319] [UPDATE: Count=0, Max=0, Min=9223372036854775807, Avg=NaN, 90=0, 99=0, 99.9=0, 99.99=0] 
-[OVERALL], RunTime(ms), 10573
-[OVERALL], Throughput(ops/sec), 94.58053532582994
+2025-11-24 14:27:13:123 14 sec: 1000 operations; 203.17 current ops/sec; [READ: Count=465, Max=7063, Min=1078, Avg=1889.84, 90=2553, 99=3277, 99.9=7063, 99.99=7063] [CLEANUP: Count=1, Max=2230271, Min=2228224, Avg=2229248, 90=2230271, 99=2230271, 99.9=2230271, 99.99=2230271] [UPDATE: Count=535, Max=26703, Min=1134, Avg=1880.07, 90=2401, 99=4255, 99.9=6307, 99.99=26703] 
+[OVERALL], RunTime(ms), 14923
+[OVERALL], Throughput(ops/sec), 67.01065469409636
 [TOTAL_GCS_G1_Young_Generation], Count, 1
-[TOTAL_GC_TIME_G1_Young_Generation], Time(ms), 3
-[TOTAL_GC_TIME_%_G1_Young_Generation], Time(%), 0.02837416059774898
+[TOTAL_GC_TIME_G1_Young_Generation], Time(ms), 2
+[TOTAL_GC_TIME_%_G1_Young_Generation], Time(%), 0.013402130938819272
 [TOTAL_GCS_G1_Old_Generation], Count, 0
 [TOTAL_GC_TIME_G1_Old_Generation], Time(ms), 0
 [TOTAL_GC_TIME_%_G1_Old_Generation], Time(%), 0.0
 [TOTAL_GCs], Count, 1
-[TOTAL_GC_TIME], Time(ms), 3
-[TOTAL_GC_TIME_%], Time(%), 0.02837416059774898
-[READ], Operations, 527
-[READ], AverageLatency(us), 2325.440227703985
-[READ], MinLatency(us), 1141
-[READ], MaxLatency(us), 30991
-[READ], 95thPercentileLatency(us), 3305
-[READ], 99thPercentileLatency(us), 6379
-[READ], Return=OK, 527
+[TOTAL_GC_TIME], Time(ms), 2
+[TOTAL_GC_TIME_%], Time(%), 0.013402130938819272
+[READ], Operations, 465
+[READ], AverageLatency(us), 1889.843010752688
+[READ], MinLatency(us), 1078
+[READ], MaxLatency(us), 7063
+[READ], 95thPercentileLatency(us), 2779
+[READ], 99thPercentileLatency(us), 3277
+[READ], Return=OK, 465
 [CLEANUP], Operations, 1
-[CLEANUP], AverageLatency(us), 2231296.0
-[CLEANUP], MinLatency(us), 2230272
-[CLEANUP], MaxLatency(us), 2232319
-[CLEANUP], 95thPercentileLatency(us), 2232319
-[CLEANUP], 99thPercentileLatency(us), 2232319
-[UPDATE], Operations, 473
-[UPDATE], AverageLatency(us), 2264.945031712474
-[UPDATE], MinLatency(us), 1088
-[UPDATE], MaxLatency(us), 72127
-[UPDATE], 95thPercentileLatency(us), 3117
-[UPDATE], 99thPercentileLatency(us), 6811
-[UPDATE], Return=OK, 473
+[CLEANUP], AverageLatency(us), 2229248.0
+[CLEANUP], MinLatency(us), 2228224
+[CLEANUP], MaxLatency(us), 2230271
+[CLEANUP], 95thPercentileLatency(us), 2230271
+[CLEANUP], 99thPercentileLatency(us), 2230271
+[UPDATE], Operations, 535
+[UPDATE], AverageLatency(us), 1880.0691588785046
+[UPDATE], MinLatency(us), 1134
+[UPDATE], MaxLatency(us), 26703
+[UPDATE], 95thPercentileLatency(us), 2693
+[UPDATE], 99thPercentileLatency(us), 4255
+[UPDATE], Return=OK, 535

@@ -7,40 +7,40 @@ Starting test.
 SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
-2025-11-22 18:29:36:859 0 sec: 0 operations; est completion in 0 second 
-Nov 22, 2025 6:29:37 PM io.netty.util.internal.PlatformDependent <clinit>
+2025-11-24 14:29:43:180 0 sec: 0 operations; est completion in 0 second 
+Nov 24, 2025 2:29:43 PM io.netty.util.internal.PlatformDependent <clinit>
 INFO: Your platform does not provide complete low-level API for accessing direct buffers reliably. Unless explicitly requested, heap buffer will always be preferred to avoid potential system unstability.
+2025-11-24 14:29:53:146 9 sec: 0 operations; est completion in 106751991167300 days 15 hours 
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-2025-11-22 18:29:46:832 9 sec: 962 operations; 96.3 current ops/sec; est completion in 1 second [READ: Count=928, Max=149759, Min=1140, Avg=3568.74, 90=4787, 99=10223, 99.9=60863, 99.99=149759] [UPDATE: Count=38, Max=25343, Min=1477, Avg=4689.42, 90=10391, 99=25343, 99.9=25343, 99.99=25343] 
-2025-11-22 18:29:49:198 12 sec: 1000 operations; 15.94 current ops/sec; [READ: Count=33, Max=3621, Min=1562, Avg=2575.52, 90=3527, 99=3621, 99.9=3621, 99.99=3621] [CLEANUP: Count=1, Max=2250751, Min=2248704, Avg=2249728, 90=2250751, 99=2250751, 99.9=2250751, 99.99=2250751] [UPDATE: Count=1, Max=2559, Min=2558, Avg=2559, 90=2559, 99=2559, 99.9=2559, 99.99=2559] 
-[OVERALL], RunTime(ms), 12380
-[OVERALL], Throughput(ops/sec), 80.77544426494346
+2025-11-24 14:29:57:902 14 sec: 1000 operations; 210.26 current ops/sec; [READ: Count=957, Max=33567, Min=822, Avg=1721.42, 90=2231, 99=3257, 99.9=5123, 99.99=33567] [CLEANUP: Count=1, Max=2215935, Min=2213888, Avg=2214912, 90=2215935, 99=2215935, 99.9=2215935, 99.99=2215935] [UPDATE: Count=43, Max=6643, Min=1211, Avg=2463.77, 90=3975, 99=6643, 99.9=6643, 99.99=6643] 
+[OVERALL], RunTime(ms), 14751
+[OVERALL], Throughput(ops/sec), 67.79201410073894
 [TOTAL_GCS_G1_Young_Generation], Count, 1
-[TOTAL_GC_TIME_G1_Young_Generation], Time(ms), 4
-[TOTAL_GC_TIME_%_G1_Young_Generation], Time(%), 0.03231017770597738
+[TOTAL_GC_TIME_G1_Young_Generation], Time(ms), 2
+[TOTAL_GC_TIME_%_G1_Young_Generation], Time(%), 0.013558402820147787
 [TOTAL_GCS_G1_Old_Generation], Count, 0
 [TOTAL_GC_TIME_G1_Old_Generation], Time(ms), 0
 [TOTAL_GC_TIME_%_G1_Old_Generation], Time(%), 0.0
 [TOTAL_GCs], Count, 1
-[TOTAL_GC_TIME], Time(ms), 4
-[TOTAL_GC_TIME_%], Time(%), 0.03231017770597738
-[READ], Operations, 961
-[READ], AverageLatency(us), 3534.630593132154
-[READ], MinLatency(us), 1140
-[READ], MaxLatency(us), 149759
-[READ], 95thPercentileLatency(us), 5591
-[READ], 99thPercentileLatency(us), 10167
-[READ], Return=OK, 961
+[TOTAL_GC_TIME], Time(ms), 2
+[TOTAL_GC_TIME_%], Time(%), 0.013558402820147787
+[READ], Operations, 957
+[READ], AverageLatency(us), 1721.4190177638454
+[READ], MinLatency(us), 822
+[READ], MaxLatency(us), 33567
+[READ], 95thPercentileLatency(us), 2473
+[READ], 99thPercentileLatency(us), 3257
+[READ], Return=OK, 957
 [CLEANUP], Operations, 1
-[CLEANUP], AverageLatency(us), 2249728.0
-[CLEANUP], MinLatency(us), 2248704
-[CLEANUP], MaxLatency(us), 2250751
-[CLEANUP], 95thPercentileLatency(us), 2250751
-[CLEANUP], 99thPercentileLatency(us), 2250751
-[UPDATE], Operations, 39
-[UPDATE], AverageLatency(us), 4634.794871794872
-[UPDATE], MinLatency(us), 1477
-[UPDATE], MaxLatency(us), 25343
-[UPDATE], 95thPercentileLatency(us), 11735
-[UPDATE], 99thPercentileLatency(us), 25343
-[UPDATE], Return=OK, 39
+[CLEANUP], AverageLatency(us), 2214912.0
+[CLEANUP], MinLatency(us), 2213888
+[CLEANUP], MaxLatency(us), 2215935
+[CLEANUP], 95thPercentileLatency(us), 2215935
+[CLEANUP], 99thPercentileLatency(us), 2215935
+[UPDATE], Operations, 43
+[UPDATE], AverageLatency(us), 2463.767441860465
+[UPDATE], MinLatency(us), 1211
+[UPDATE], MaxLatency(us), 6643
+[UPDATE], 95thPercentileLatency(us), 4831
+[UPDATE], 99thPercentileLatency(us), 6643
+[UPDATE], Return=OK, 43

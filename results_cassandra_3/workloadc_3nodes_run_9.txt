@@ -7,32 +7,33 @@ Starting test.
 SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
-2025-11-22 18:38:59:890 0 sec: 0 operations; est completion in 0 second 
-Nov 22, 2025 6:39:00 PM io.netty.util.internal.PlatformDependent <clinit>
+2025-11-24 14:40:31:476 0 sec: 0 operations; est completion in 0 second 
+Nov 24, 2025 2:40:31 PM io.netty.util.internal.PlatformDependent <clinit>
 INFO: Your platform does not provide complete low-level API for accessing direct buffers reliably. Unless explicitly requested, heap buffer will always be preferred to avoid potential system unstability.
+2025-11-24 14:40:41:442 10 sec: 0 operations; est completion in 106751991167300 days 15 hours 
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-2025-11-22 18:39:09:804 9 sec: 1000 operations; 100.73 current ops/sec; [READ: Count=1000, Max=44511, Min=833, Avg=1692.67, 90=2349, 99=3455, 99.9=41503, 99.99=44511] [CLEANUP: Count=1, Max=2236415, Min=2234368, Avg=2235392, 90=2236415, 99=2236415, 99.9=2236415, 99.99=2236415] 
-[OVERALL], RunTime(ms), 9931
-[OVERALL], Throughput(ops/sec), 100.6947940791461
+2025-11-24 14:40:45:859 14 sec: 1000 operations; 226.35 current ops/sec; [READ: Count=1000, Max=23887, Min=830, Avg=1381.26, 90=1753, 99=2389, 99.9=20287, 99.99=23887] [CLEANUP: Count=1, Max=2213887, Min=2211840, Avg=2212864, 90=2213887, 99=2213887, 99.9=2213887, 99.99=2213887] 
+[OVERALL], RunTime(ms), 14418
+[OVERALL], Throughput(ops/sec), 69.35774726036898
 [TOTAL_GCS_G1_Young_Generation], Count, 1
-[TOTAL_GC_TIME_G1_Young_Generation], Time(ms), 4
-[TOTAL_GC_TIME_%_G1_Young_Generation], Time(%), 0.040277917631658444
+[TOTAL_GC_TIME_G1_Young_Generation], Time(ms), 2
+[TOTAL_GC_TIME_%_G1_Young_Generation], Time(%), 0.013871549452073797
 [TOTAL_GCS_G1_Old_Generation], Count, 0
 [TOTAL_GC_TIME_G1_Old_Generation], Time(ms), 0
 [TOTAL_GC_TIME_%_G1_Old_Generation], Time(%), 0.0
 [TOTAL_GCs], Count, 1
-[TOTAL_GC_TIME], Time(ms), 4
-[TOTAL_GC_TIME_%], Time(%), 0.040277917631658444
+[TOTAL_GC_TIME], Time(ms), 2
+[TOTAL_GC_TIME_%], Time(%), 0.013871549452073797
 [READ], Operations, 1000
-[READ], AverageLatency(us), 1692.668
-[READ], MinLatency(us), 833
-[READ], MaxLatency(us), 44511
-[READ], 95thPercentileLatency(us), 2653
-[READ], 99thPercentileLatency(us), 3455
+[READ], AverageLatency(us), 1381.26
+[READ], MinLatency(us), 830
+[READ], MaxLatency(us), 23887
+[READ], 95thPercentileLatency(us), 1892
+[READ], 99thPercentileLatency(us), 2389
 [READ], Return=OK, 1000
 [CLEANUP], Operations, 1
-[CLEANUP], AverageLatency(us), 2235392.0
-[CLEANUP], MinLatency(us), 2234368
-[CLEANUP], MaxLatency(us), 2236415
-[CLEANUP], 95thPercentileLatency(us), 2236415
-[CLEANUP], 99thPercentileLatency(us), 2236415
+[CLEANUP], AverageLatency(us), 2212864.0
+[CLEANUP], MinLatency(us), 2211840
+[CLEANUP], MaxLatency(us), 2213887
+[CLEANUP], 95thPercentileLatency(us), 2213887
+[CLEANUP], 99thPercentileLatency(us), 2213887
