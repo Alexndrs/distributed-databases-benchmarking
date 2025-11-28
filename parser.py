@@ -94,9 +94,20 @@ def compute_statistics(results):
                     metrics_by_key = defaultdict(list)
 
                     for idx, metric_dict in samples.items():
+
+                        # --- Compute new global latencies per file ---
+                        avg_global, p95_global = compute_global_latencies(workload, phase, metric_dict)
+
+                        if avg_global is not None:
+                            metric_dict["avg_latency_global"] = avg_global
+                        if p95_global is not None:
+                            metric_dict["p95_global"] = p95_global
+
+                        # Accumulate metrics
                         for key, value in metric_dict.items():
                             metrics_by_key[key].append(value)
 
+                    # Reduce by mean/std
                     for metric_name, values in metrics_by_key.items():
                         arr = np.array(values)
                         stats.append({
@@ -111,6 +122,56 @@ def compute_statistics(results):
                         })
 
     return pd.DataFrame(stats)
+
+def compute_global_latencies(workload, phase, metrics):
+    '''
+    Return (avg_global, p95_global) with correct YCSB semantics:
+    - LOAD phase always = INSERT only
+    - RUN phase follows workload proportions
+    '''
+    # LOAD PHASE = only INSERT
+    if phase == "load":
+        avg = metrics.get("insert_avg")
+        p95 = metrics.get("insert_95")
+        return avg, p95
+
+    # RUN PHASE below
+    if workload == "a":
+        read_avg = metrics.get("read_avg")
+        update_avg = metrics.get("update_avg")
+        read_95 = metrics.get("read_95")
+        update_95 = metrics.get("update_95")
+
+        if read_avg is None or update_avg is None:
+            return None, None
+
+        avg = 0.5 * read_avg + 0.5 * update_avg
+        p95 = 0.5 * read_95 + 0.5 * update_95
+        return avg, p95
+
+
+    if workload == "b":
+        read_avg = metrics.get("read_avg")
+        update_avg = metrics.get("update_avg")
+        read_95 = metrics.get("read_95")
+        update_95 = metrics.get("update_95")
+
+        if read_avg is None or update_avg is None:
+            return None, None
+
+        avg = 0.95 * read_avg + 0.05 * update_avg
+        p95 = 0.95 * read_95 + 0.05 * update_95
+        return avg, p95
+
+
+    if workload == "c":
+        avg = metrics.get("read_avg")
+        p95 = metrics.get("read_95")
+        return avg, p95
+
+    return None, None
+
+
 
 
 if __name__ == "__main__":
